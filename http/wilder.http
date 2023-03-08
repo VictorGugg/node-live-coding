@@ -1,0 +1,43 @@
+POST http://localhost:3000/api/wilder
+# Content Type precise what type of file you're sending (here json)
+Content-Type: application/json
+
+# Insert an empty line then insert the file to send
+{
+    "name": "Victor" 
+}
+
+# Triple # allows to separate requests (if you want many requests on the same file)
+
+###
+GET http://localhost:3000/api/wilder
+
+###
+PUT http://localhost:3000/api/wilder/1
+Content-Type: application/json
+
+{ 
+    "name": "The Only And One True First Wilder !"
+}
+
+###
+DELETE http://localhost:3000/api/wilder/20
+
+###
+PUT http://localhost:3000/api/wilder-add-skill
+Content-Type: application/json
+
+{
+    "wilderName": "Victor",
+    "skillName": "PHP"
+}
+
+###
+PUT http://localhost:3000/api/wilder-rate-skill
+Content-Type: application/json
+
+{
+    "wilderName": "Victor",
+    "skillName": "PHP",
+    "rating": 7
+}
