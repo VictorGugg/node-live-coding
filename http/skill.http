@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/skill
+POST http://localhost:3030/api/skill
 # Content Type precise what type of file you're sending (here json)
 Content-Type: application/json
 
@@ -10,10 +10,10 @@ Content-Type: application/json
 # Triple # allows to separate requests (if you want many requests on the same file)
 
 ###
-GET http://localhost:3000/api/skill
+GET http://localhost:3030/api/skill
 
 ###
-PUT http://localhost:3000/api/skill/4
+PUT http://localhost:3030/api/skill/4
 Content-Type: application/json
 
 { 
@@ -21,4 +21,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/skill/2
+DELETE http://localhost:3030/api/skill/2

@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/wilder
+POST http://localhost:3030/api/wilder
 # Content Type precise what type of file you're sending (here json)
 Content-Type: application/json
 
@@ -10,10 +10,10 @@ Content-Type: application/json
 # Triple # allows to separate requests (if you want many requests on the same file)
 
 ###
-GET http://localhost:3000/api/wilder
+GET http://localhost:3030/api/wilder
 
 ###
-PUT http://localhost:3000/api/wilder/1
+PUT http://localhost:3030/api/wilder/1
 Content-Type: application/json
 
 { 
@@ -21,10 +21,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/wilder/20
+DELETE http://localhost:3030/api/wilder/20
 
 ###
-PUT http://localhost:3000/api/wilder-add-skill
+PUT http://localhost:3030/api/wilder-add-skill
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/wilder-rate-skill
+PUT http://localhost:3030/api/wilder-rate-skill
 Content-Type: application/json
 
 {

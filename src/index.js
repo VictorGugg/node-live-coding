@@ -1,10 +1,14 @@
-const express = require("express");
+const express = require('express');
+const cors = require('cors');
 const dataSource = require('./utils').dataSource
+
 const wilderController = require('./controller/wilderController');
 const skillController = require('./controller/skillController');
 
 const app = express();
 
+// using cors to allow connection from other IP (front-end = port 3000, API = port 3030)
+app.use(cors());
 // allows the app to read .json
 app.use(express.json());
 
@@ -37,8 +41,8 @@ const start = async () => {
     // creates new entry in SQL db
     // dataSource.getRepository(Wilder).save({ name: 'First Wilder'});
 
-    // Starting Server (here on port 3000)
-    app.listen(3000, () => console.log('Server Started on 3000'));
+    // Starting Server (here on port 3030)
+    app.listen(3030, () => console.log('Server Started on 3030'));
 };
 
 start();
