@@ -21,7 +21,8 @@ module.exports = {
         try {
         const allWilders = await dataSource
             .getRepository(Wilder)
-            .find();
+            // find parameters to display newly added first
+            .find({order: {id: 'DESC'}});
             res.send(allWilders);
             } catch (err) {
                 console.log('Errors while reading the wilders.');
@@ -54,15 +55,18 @@ module.exports = {
         try {
             const wilderToUpdate = await dataSource
                 .getRepository(Wilder)
-                .findOneByOrFail({ name: req.body.wilderName });
+                .findOneByOrFail({ name: req.body.wilder });
             // console.log to make sure we've got a wilder
             console.log(wilderToUpdate);
             const skillToAdd = await dataSource
                 .getRepository(Skill)
-                .findOneByOrFail({ name: req.body.skillName });
+                .findOneByOrFail({ name: req.body.skill });
             // console.log to make sure we've got a skill
             console.log(skillToAdd);
             wilderToUpdate.skills.push(skillToAdd);
+            await dataSource
+                .getRepository(Wilder)
+                .save(wilderToUpdate);
             res.send('Skill successfully added to the Wilder !');
         } catch (err) {
             console.log(err);

@@ -4,7 +4,8 @@ Content-Type: application/json
 
 # Insert an empty line then insert the file to send
 {
-    "name": "Victor" 
+    "name": "Ludo",
+    "city": "Haguenau"
 }
 
 # Triple # allows to separate requests (if you want many requests on the same file)
@@ -28,8 +29,8 @@ PUT http://localhost:3030/api/wilder-add-skill
 Content-Type: application/json
 
 {
-    "wilderName": "Victor",
-    "skillName": "PHP"
+    "wilder": "Ludo",
+    "skill": "PHP"
 }
 
 ###
