@@ -1,4 +1,5 @@
 const dataSource = require('../utils').dataSource;
+const { In } = require('typeorm');
 const Grade = require('../entity/Grade');
 const Skill = require('../entity/Skill');
 const Wilder = require('../entity/Wilder');
@@ -51,23 +52,26 @@ module.exports = {
         }
     },
 
-    addSkill: async (req, res) => {
+    addSkills: async (req, res) => {
         try {
             const wilderToUpdate = await dataSource
                 .getRepository(Wilder)
                 .findOneByOrFail({ name: req.body.wilder });
             // console.log to make sure we've got a wilder
             console.log(wilderToUpdate);
-            const skillToAdd = await dataSource
+            const skillsToAdd = await dataSource
                 .getRepository(Skill)
-                .findOneByOrFail({ name: req.body.skill });
-            // console.log to make sure we've got a skill
-            console.log(skillToAdd);
-            wilderToUpdate.skills.push(skillToAdd);
+                // findBy and In to get an array from the request (to allow multiple skills selection)
+                .findBy({ name: In(req.body.skill) });
+            // console.log to make sure we've got skills
+            console.log(skillsToAdd);
+            // We have an array, so we need to use the spread syntax ('...')
+            // to split the elements of an array (and push them into our skills array).
+            wilderToUpdate.skills.push(...skillsToAdd);
             await dataSource
                 .getRepository(Wilder)
                 .save(wilderToUpdate);
-            res.send('Skill successfully added to the Wilder !');
+            res.send('Skills successfully added to the Wilder !');
         } catch (err) {
             console.log(err);
             res.send('Error while adding the skill.');

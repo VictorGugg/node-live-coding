@@ -24,7 +24,7 @@ app.get('/api/wilder', wilderController.read);
 app.put('/api/wilder/:id', wilderController.update);
 app.delete('/api/wilder/:id', wilderController.delete);
 
-app.put('/api/wilder-add-skill', wilderController.addSkill);
+app.put('/api/wilder-add-skills', wilderController.addSkills);
 
 app.put('/api/wilder-rate-skill', wilderController.rateSkill);
 
